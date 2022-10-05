@@ -1,0 +1,77 @@
+//create a menu to ask the user to choose one of the following:
+//1. enter 5 integers
+//2. find and display the largest integer value
+//3. calculate and display the average of all integers
+//4. exit
+
+int[] arrNums = new int[5];
+int opt;
+do
+{
+    Console.WriteLine("Please select one of the following");
+    Console.WriteLine("1. enter 5 integers");
+    Console.WriteLine("2. find and display the largest integer value");
+    Console.WriteLine("3. calculate and display the average of all integers");
+    Console.WriteLine("4. Exit the application");
+    opt = int.Parse(Console.ReadLine());
+    if (opt == 1)
+    {
+        StoreData();
+    }
+    else if (opt == 2)
+    {
+        DisplayLargest();
+    }
+    else if (opt == 3)
+    {
+        DisplayAverage();
+    }
+    else if (opt == 4)
+    {
+        Console.WriteLine("Thank you for using the application.");
+    }
+
+} while (opt != 4);
+
+void DisplayAverage()
+{
+    //sol1
+    //int total = 0;
+    //for (int i = 0; i < arrNums.Length; i++)
+    //{
+    //    total += arrNums[i];
+    //}
+    //double average = (double)total / arrNums.Length;
+    //Console.WriteLine($"The average value is {average}");
+
+    //sol2
+    double average = arrNums.Average();
+    Console.WriteLine($"The average value is {average}");
+}
+
+void DisplayLargest()
+{
+    //sol1
+    //int largest=arrNums[0];
+    //for (int i = 1; i < arrNums.Length; i++)
+    //{
+    //    if (arrNums[i] > largest)
+    //    {
+    //        largest = arrNums[i];
+    //    }
+    //}
+    //Console.WriteLine($"The largest value is {largest}");
+
+    //sol2
+    int largest = arrNums.Max();
+    Console.WriteLine($"The largest value is {largest}");
+}
+
+void StoreData()
+{
+    for (int i = 0; i < arrNums.Length; i++)
+    {
+        Console.WriteLine("Enter a number");
+        arrNums[i] = int.Parse(Console.ReadLine());
+    }
+}
