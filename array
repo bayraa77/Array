@@ -1,0 +1,97 @@
+//declare and create an array to store 4 integer numbers
+//#1
+//int[] stuIds;
+//stuIds = new int[4];
+
+//#2
+//int[] stuIds = new int[4];
+
+//declare, create and initialise an array to store 4 int numbers
+int[] stuIds = { 100, 200, 300, 400 };
+string[] stuNames = { "John","Mary","Tom","Hanna"};
+int opt;
+do
+{
+    Console.WriteLine("Please select one of the following");
+    Console.WriteLine("1. Store students' details");
+    Console.WriteLine("2. Display students' details");
+    Console.WriteLine("3. Search for a student by Id");
+    Console.WriteLine("4. Exit the application");
+    opt = int.Parse(Console.ReadLine());
+    if (opt == 1)
+    {
+        StoreData();
+    }
+    else if (opt == 2)
+    {
+        DisplayData();
+    }
+    else if(opt == 3)
+    {
+        SearchById();
+    }
+    else if (opt == 4)
+    {
+        Console.WriteLine("Thank you for using the application.");
+        break;
+    }
+    //switch (opt)
+    //{
+    //    case 1: StoreData();break;
+    //    case 2: DisplayData();break;
+    //    case 4: Console.WriteLine("Thank you for using the application.");
+    //        break;
+    //}
+
+} while (opt!=4);
+
+
+void DisplayData()
+{
+    //foreach (int item in stuIds)
+    //{
+    //    Console.WriteLine(item);
+    //}
+
+    //use for loop to display each student's details (id and name)
+    //100 John
+    //200 Mary
+    //Console.WriteLine($"{stuIds[0]} {stuNames[0]}");
+    //Console.WriteLine($"{stuIds[1]} {stuNames[1]}");
+    
+    for (int i = 0; i < stuIds.Length; i++)
+    {
+        Console.WriteLine($"{stuIds[i]} {stuNames[i]}");
+    }
+
+}
+void StoreData()
+{
+    for (int i = 0; i < stuIds.Length; i++)
+    {
+        Console.WriteLine($"Please enter the Id for student {i+1}");
+        stuIds[i] = int.Parse(Console.ReadLine());
+        Console.WriteLine($"Please enter the Name for student {i + 1}");
+        stuNames[i] = Console.ReadLine();
+    }
+}
+
+void SearchById()
+{
+    //get the student id from the user
+    Console.WriteLine("Please enter the student id to find");
+    int searchId = int.Parse(Console.ReadLine());
+    //sol1: find and display the name of the given student id
+    //for (int i = 0; i < stuIds.Length; i++)
+    //{
+    //    if (searchId == stuIds[i])
+    //    {
+    //        Console.WriteLine($"{searchId} {stuNames[i]}");
+    //        break;
+    //    }
+    //}
+
+    //sol2: find and display the name of the given student id
+    int foundPos = Array.IndexOf(stuIds, searchId);
+    Console.WriteLine($"{searchId} {stuNames[foundPos]}");
+}
